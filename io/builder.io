@@ -1,13 +1,15 @@
 Builder := Object clone
 Builder forward := method (
-  write("<", call message name, ">")
+  name := call message name
+  name = if(name == "mylist", "ul", name)
+  write("<", name, ">")
   call message arguments foreach (
     arg,
 	content := self doMessage(arg);
 	if (content type == "Sequence", write(content)))
-  writeln("</", call message name, ">"))
+  writeln("</", name, ">"))
 
-Builder ul (
+Builder mylist (
 		li ("Io"),
 		li ("Lua"),
 		li ("Javascript"))
