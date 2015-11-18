@@ -1,8 +1,56 @@
+
+1972 Alain Colmerauer and Phillipe Roussel
+logic, declarative language.
+Indicate rules and facts. Do queries.
+Not general purpose.
+deep first
+
+### Tooling
 gprolog is not a repl
 
-declarative language
+#### Rules and facts
 
-Rules and facts
+	likes(wallace, cheese).
+	likes(grommit, cheese).
+	likes(wendolene, sheep).
+
+	friend(X, Y) :- \+ (X = Y), likes(X, Z), likes(Y, Z).	
+
+
+#### Unification
+uppercase means that is something that needs to be matched
+lowercase is an actual value
+
+	cat(lion).
+	cat(tiger).
+
+	dorothy(X, Y, Z) :- X = lion, Y = tiger, Z = bear.
+	twin_cats(X, Y) :- cat(X), cat(Y).
+
+
+#### Solving complex problems easily
+4 colours
+
+	different(red, green). different(red, blue).
+	different(green, red). different(green, blue).
+	different(blue, red). different(blue, green).
+
+	coloring(Alabama, Mississippi, Georgia, Tenessee, Florida) :-
+		different(Mississippi, Tenessee),
+		different(Mississippi, Alabama),
+		different(Alabama, Tenessee),
+		different(Alabama, Mississippi),
+		different(Alabama, Georgia),
+		different(Alabama, Florida),
+		different(Georgia, Florida),
+		different(Georgia, Tenessee).
+
+
+#### recursion
+tco is necessary
+
+#### The example of power
+Trying to solve a sudoku of 4.
 
 	sudoku(Puzzle, Solution) :-
 		Solution = Puzzle,
@@ -36,17 +84,4 @@ Rules and facts
 		fd_all_different(Head),
 		valid(Tail).
 
-
-
-unification
-uppercase means that is something that needs to be matched
-lowercase is an actual value
-cats
-
-Solving complex problems easily
-4 colours
-
-recursion
-tco is necessary
-
-The example of power
+Eight Queens 24 lines.
