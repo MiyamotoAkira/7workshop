@@ -9,7 +9,7 @@ class Board
   end
 
   def occupy_square_with(rank, file, key)
-    @squares[rank][file] = keu
+    @squares[rank][file] = key
   end
 
   def traverse_all_squares()
